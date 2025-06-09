@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Self-Image Reset Plan: LIFT & SHIFT Worksheet</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: white;
+            position: relative;
+        }
+        
+        /* Watermark */
+        body::before {
+            content: "Christina Powell • The Grey Area Mental Training";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.05);
+            z-index: -1;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 0.5em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #34495e;
+            font-size: 18px;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        
+        p {
+            margin-bottom: 1em;
+            color: #2c3e50;
+        }
+        
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 10px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .btn {
+            padding: 18px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            /* Critical for mobile */
+            -webkit-appearance: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+            /* Ensure touch events work */
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transition: width 0.6s, height 0.6s, top 0.6s, left 0.6s;
+        }
+        
+        .btn:active:before {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(45deg, #27ae60, #229954);
+            color: white;
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+        }
+        
+        .save-status {
+            background-color: #2ecc71;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .save-status.show {
+            opacity: 1;
+        }
+        
+        .warning {
+            background-color: #fdf9f7;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 2em;
+            border-left: 4px solid #e67e22;
+        }
+        
+        .warning h3 {
+            color: #d68910;
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-weight: normal;
+            font-size: 16px;
+        }
+        
+        .warning p {
+            color: #85644a;
+            margin-bottom: 0.3em;
+            font-weight: normal;
+            font-size: 14px;
+        }
+        
+        .intro {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 2em;
+            border-left: 4px solid #3498db;
+        }
+        
+        .text-input {
+            width: 100%;
+            min-height: 80px;
+            padding: 20px;
+            border: 2px solid #bdc3c7;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 16px;
+            resize: vertical;
+            margin: 15px 0 25px 0;
+            background-color: #fdfdfd;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            /* Mobile optimization */
+            -webkit-appearance: none;
+            -webkit-border-radius: 10px;
+        }
+        
+        .text-input:focus {
+            outline: none;
+            border-color: #3498db;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .text-input.has-content {
+            background-color: #f0f8ff;
+            border-color: #3498db;
+        }
+        
+        .small-input {
+            min-height: 60px;
+        }
+        
+        .question {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .examples {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .action-box {
+            background-color: #e8f6f3;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .pro-tip {
+            background-color: #fef9e7;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #f39c12;
+            font-style: italic;
+        }
+        
+        .contact-section {
+            background-color: #f0f8ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 2em 0;
+            border-left: 4px solid #3498db;
+            text-align: center;
+        }
+        
+        .contact-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .contact-section p {
+            margin-bottom: 0.5em;
+        }
+        
+        .contact-section a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+        
+        ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            margin-top: 3em;
+            padding-top: 25px;
+            border-top: 1px solid #bdc3c7;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .research {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 2em;
+            font-size: 14px;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #27ae60);
+            transition: width 0.3s ease;
+            z-index: 1001;
+        }
+        
+        /* Desktop styles */
+        @media (min-width: 769px) {
+            body {
+                max-width: 8.5in;
+                padding: 1in;
+            }
+            
+            .controls {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .btn {
+                display: inline-block;
+                min-width: 140px;
+                margin: 0 10px;
+            }
+            
+            .text-input {
+                min-height: 60px;
+                padding: 15px;
+                font-size: 14px;
+            }
+        }
+        
+        @media print {
+            body::before {
+                position: absolute;
+            }
+            .text-input {
+                background-color: white !important;
+                -webkit-print-color-adjust: exact;
+                border: 1px solid #333 !important;
+                print-color-adjust: exact;
+            }
+            .controls {
+                display: none !important;
+            }
+            .progress-bar {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="controls">
+        <button class="btn btn-success" id="saveBtn">💾 Download My Responses</button>
+        <button class="btn btn-primary" id="printBtn">📱 Save as PDF</button>
+        <button class="btn btn-warning" id="clearBtn">🗑️ Clear All</button>
+        <div class="save-status" id="saveStatus">Saved!</div>
+    </div>
+
+    <h1>The Self-Image Reset Plan: LIFT & SHIFT Worksheet</h1>
+    
+    <div class="warning">
+        <h3>📱 Mobile-Optimized Worksheet</h3>
+        <p>Fill out on your phone, tablet, or computer. Your responses save automatically and can be downloaded or printed as PDF.</p>
+        <p><strong>Tap the buttons above to save your work!</strong></p>
+    </div>
+    
+    <div class="intro">
+        <h2>Why This Actually Works</h2>
+        <p>Turns out there's a secret to visualization that most people miss. Holmes and Collins cracked the code in 2001. They discovered that unstructured visualization does almost nothing, but when you build it systematically? That's when your brain starts treating practice and reality the same way.</p>
+        
+        <p>Most visualization is just wishful thinking in HD. LIFT and SHIFT fix that by giving your brain the structure it needs to actually rewire your self-image instead of just daydreaming about being better.</p>
+        
+        <p>This follows the Let Go, Interrupt, Form, Trust phases to build a mental picture that sticks. Then SHIFT tests it under real pressure, so it's there when the lights are on.</p>
+    </div>
+
+    <h2>Step 1: Let Go</h2>
+    <h3>Dump the Mental Garbage</h3>
+    <p>Before you build anything new, you need to clear out the clutter. What's the mental baggage or negative thoughts that show up under pressure?</p>
+    
+    <div class="question">What's that one thought that shows up and ruins everything?</div>
+    <textarea class="text-input" data-question="negative_thought" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="question">How does it mess with your body? (tight chest, shaky hands, heavy legs)</div>
+    <textarea class="text-input" data-question="body_response" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="question">Who are the people who make you doubt yourself? Where do you feel that doubt?</div>
+    <textarea class="text-input" data-question="doubt_sources" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="action-box">
+        <strong>Visualizations that work:</strong> Close your eyes. Take three slow breaths, then pick your poison:
+        <ul>
+            <li>Watch that tension melt, drain, or evaporate from your body</li>
+            <li>See a color that represents the stress. Watch it drain down your body, out your feet, into the ground</li>
+            <li>Put those doubting voices in a T-shirt cannon and launch them into the sky (or if you're not into that, seeing them get sucked into bubbles and float away works just as well)</li>
+        </ul>
+    </div>
+
+    <h2>Step 1.5: Name Your Current Self-Image</h2>
+    <p>Before you build the new version, get brutally honest about the old one.</p>
+    
+    <div class="question">When pressure hits, who do you become?</div>
+    <div class="examples">(Examples: "The one who chokes," "The perfectionist who freezes," "The player who fades")</div>
+    <textarea class="text-input" data-question="pressure_identity" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="question">What's the story you tell yourself about why you fail in that moment?</div>
+    <textarea class="text-input" data-question="failure_story" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="question">If your current self-image were a movie character, who would it be and why?</div>
+    <textarea class="text-input" data-question="current_character" placeholder="Tap here and start typing your response..."></textarea>
+
+    <h2>Step 2: Interrupt</h2>
+    <h3>Hit the Reset Button</h3>
+    <p>You've spotted the spiral (or negative loop). Now break it. Use a quick reset cue or anchor phrase that snaps you back.</p>
+    
+    <div class="question">What's your reset cue?</div>
+    <div class="examples">(Examples: "Reset," wrist shake, deep exhale, Stop sign, Yellow traffic light)</div>
+    <textarea class="text-input small-input" data-question="reset_cue" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="question">Can't think of one? Try remembering a time you felt calm and in control. What helped you reset then?</div>
+    <textarea class="text-input" data-question="calm_memory" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <p><strong>Or steal one of these:</strong></p>
+    <ul>
+        <li>"I've got this"</li>
+        <li>"Here we go"</li>
+        <li>"Stay with it"</li>
+        <li>"I'm owning this moment"</li>
+        <li>"Awareness is half the battle"</li>
+        <li>"There's always a way forward"</li>
+    </ul>
+    
+    <div class="action-box">
+        <strong>Visualizations that work:</strong> Close your eyes. Take three slow breaths
+        <ul>
+            <li>Now see it. See that phrase go into your body and expand it</li>
+            <li>Next, see your muscles tense up and relax</li>
+            <li>Lastly, put your attention on the back of your knees, your right earlobe, your pinky toenail, your elbow. Breathe</li>
+        </ul>
+        <strong>Practice this:</strong> Use that cue and visualization every time your mind starts spiraling.
+    </div>
+    
+    <div class="pro-tip">
+        <strong>Pro tip:</strong> If you think you notice everything around you, watch the <a href="https://youtu.be/xNSgmm9FX2s?si=1_UnkRAUWMsYmxXY" target="_blank" style="color: #e67e22; text-decoration: none; font-weight: bold;">Moonwalking Bear</a>. Spoiler alert: you don't.
+    </div>
+
+    <h2>Step 3: Form</h2>
+    <h3>Build Your Mental Highlight Reel</h3>
+    <p>Time to create the version of yourself that owns the moment.</p>
+    
+    <div class="action-box">
+        <strong>Visualizations that work:</strong> Close your eyes. Take three slow breaths:
+    </div>
+    
+    <div class="question">Picture your favorite version of yourself. What does that look like? Who's around? What's your mood? Your body language?</div>
+    <textarea class="text-input" data-question="favorite_self" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <p><strong>Now drop that version into your pressure moment (competition, presentation, big meeting).</strong></p>
+    
+    <div class="question">Picture that exact moment: the final program, the qualifying run, the keynote, the takeoff. What do you see?</div>
+    <textarea class="text-input" data-question="pressure_moment_visual" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="question">How does your body feel?</div>
+    <textarea class="text-input" data-question="body_feeling" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="question">What do you hear?</div>
+    <textarea class="text-input" data-question="sounds" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <p><strong>Visualize this 2-3 times daily.</strong> Use every sense you've got. This builds the neural highways that make it real (thanks, brain science). More specifically, Decety and Jeannerod (1995).</p>
+
+    <h2>Step 4: Trust</h2>
+    <h3>Stop Overthinking It</h3>
+    <p>Time to shift from analysis to instinct. Trust what you've trained.</p>
+    
+    <div class="question">How do you know when you're overthinking? (second-guessing, spiraling, tight shoulders, shallow breathing, shaky legs, racing heart)</div>
+    <textarea class="text-input" data-question="overthinking_signs" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="action-box">
+        <strong>Here's what works:</strong> Close your eyes. Take three slow breaths
+    </div>
+    
+    <div class="question">What does trusting your training feel like?</div>
+    <textarea class="text-input" data-question="trust_feeling" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="question">What do you look like when you trust yourself and your skills?</div>
+    <textarea class="text-input" data-question="trust_appearance" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="question">See yourself talking to your coach, friend, parent, mentor, and hear their encouraging words to you. What worked? What didn't?</div>
+    <textarea class="text-input" data-question="encouragement" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <p><strong>Now pair your visualization with proof you're ready. Maybe that's:</strong></p>
+    <ul>
+        <li>Notes on how each practice felt</li>
+        <li>What's working in your mental prep</li>
+        <li>A quick body pep talk when nerves hit</li>
+        <li>A hug, a dance party or a joke from a friend</li>
+    </ul>
+
+    <h2>SHIFT: Where the Magic Happens</h2>
+    <p>This is where your new mental picture gets battle-tested under real pressure.</p>
+    
+    <h3>Step 5: Add the Chaos</h3>
+    <p>Find somewhere distracting, like a crowded lobby, noisy coffee shop, or a busy hallway. Run your visualization there. When your attention wanders (it will), just bring it back. You're training your focus muscle.</p>
+    
+    <div class="pro-tip">
+        <strong>Pro Tip:</strong> Yes, this is going to feel awkward, embarrassing or vulnerable. That's the point. You have to train through those moments.
+    </div>
+    
+    <h3>Step 6: Take It Live</h3>
+    <p>Bring it into training and competition. Notice how you handle the nerves and curveballs. Adjust as needed. This is where performance actually changes.</p>
+    
+    <div class="question">Take notes. What actually worked? Did anything work? Did something else completely throw you off? (Remember, everything is data. Mistakes. Successes. Progress. All data.)</div>
+    <textarea class="text-input" data-question="live_results" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="pro-tip">
+        <strong>Pro Tip:</strong> Can't picture the venue? Google it. Look at photos, then close your eyes and drop yourself into that scene.
+    </div>
+
+    <h2>Time to Put Your Money Where Your Mind Is</h2>
+    <p>Use this before your next moment of truth. Remember, practice in calm conditions and then bring it to the unpredictable before your event, competition, keynote.</p>
+
+    <h2>Your New Story</h2>
+    
+    <div class="question">Looking back at Step 1.5, what was your old self-image character?</div>
+    <textarea class="text-input small-input" data-question="old_character_recap" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="question">Based on all your visualization work, who's your new character? What do you call this version of yourself?</div>
+    <textarea class="text-input small-input" data-question="new_character" placeholder="Tap here and start typing your response..."></textarea>
+    
+    <div class="question">Write your new story in one sentence: "I am the person who..."</div>
+    <textarea class="text-input small-input" data-question="new_story" placeholder="I am the person who..."></textarea>
+    
+    <div class="question">When pressure hits next time, which version are you choosing to be?</div>
+    <textarea class="text-input small-input" data-question="chosen_version" placeholder="Tap here and start typing your response..."></textarea>
+
+    <div class="contact-section">
+        <h3>Want to Take This Deeper?</h3>
+        <p>Interested in working with me? Ready to stop leaving your best performance to chance and start training your mind like you train your body?</p>
+        <p>Check out <a href="https://greyareatraining.com" target="_blank">greyareatraining.com</a> or drop me a line at <a href="mailto:cpowell@greyareatraining.com">cpowell@greyareatraining.com</a></p>
+        <p>Let's build something that actually works when it counts.</p>
+    </div>
+
+    <div class="research">
+        <h3>Research that backs this up:</h3>
+        <ul>
+            <li>Maltz, M. (1960). Psycho-Cybernetics.</li>
+            <li>Decety & Jeannerod (1995): Your brain treats mental practice like the real thing</li>
+            <li>Holmes & Collins (2001): Structured imagery beats random daydreaming every time</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>© Christina Powell • The Grey Area Mental Training</p>
+    </div>
+
+    <script>
+        let responses = {};
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeInputs();
+            setupEventListeners();
+            updateProgress();
+            loadSavedData();
+        });
+        
+        function setupEventListeners() {
+            const saveBtn = document.getElementById('saveBtn');
+            const printBtn = document.getElementById('printBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            
+            // Multiple event types for maximum mobile compatibility
+            const events = ['click', 'touchend', 'touchstart'];
+            
+            events.forEach(event => {
+                saveBtn.addEventListener(event, function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (event === 'touchend' || event === 'click') {
+                        saveResponses();
+                    }
+                }, { passive: false });
+                
+                printBtn.addEventListener(event, function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (event === 'touchend' || event === 'click') {
+                        window.print();
+                    }
+                }, { passive: false });
+                
+                clearBtn.addEventListener(event, function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (event === 'touchend' || event === 'click') {
+                        clearAll();
+                    }
+                }, { passive: false });
+            });
+        }
+        
+        function initializeInputs() {
+            const inputs = document.querySelectorAll('.text-input');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.dataset.question) {
+                        responses[this.dataset.question] = this.value;
+                        this.classList.toggle('has-content', this.value.trim() !== '');
+                        saveToLocalStorage();
+                        showSaveStatus();
+                        updateProgress();
+                    }
+                });
+                
+                input.classList.toggle('has-content', input.value.trim() !== '');
+            });
+        }
+        
+        function loadSavedData() {
+            try {
+                const saved = localStorage.getItem('lift_shift_responses');
+                if (saved) {
+                    responses = JSON.parse(saved);
+                    Object.keys(responses).forEach(key => {
+                        const input = document.querySelector(`[data-question="${key}"]`);
+                        if (input && responses[key]) {
+                            input.value = responses[key];
+                            input.classList.add('has-content');
+                        }
+                    });
+                    updateProgress();
+                }
+            } catch (error) {
+                console.log('No saved data found');
+            }
+        }
+        
+        function saveToLocalStorage() {
+            try {
+                localStorage.setItem('lift_shift_responses', JSON.stringify(responses));
+            } catch (error) {
+                console.log('Could not save to localStorage');
+            }
+        }
+        
+        function showSaveStatus() {
+            const status = document.getElementById('saveStatus');
+            status.classList.add('show');
+            setTimeout(() => {
+                status.classList.remove('show');
+            }, 2000);
+        }
+        
+        function updateProgress() {
+            const inputs = document.querySelectorAll('.text-input[data-question]');
+            const filled = Array.from(inputs).filter(input => input.value.trim() !== '').length;
+            const percentage = (filled / inputs.length) * 100;
+            document.getElementById('progressBar').style.width = percentage + '%';
+        }
+        
+        function saveResponses() {
+            try {
+                // Get current values
+                const inputs = document.querySelectorAll('.text-input[data-question]');
+                inputs.forEach(input => {
+                    if (input.dataset.question) {
+                        responses[input.dataset.question] = input.value;
+                    }
+                });
+                
+                const data = [];
+                data.push('LIFT & SHIFT Worksheet Responses');
+                data.push('=====================================');
+                data.push('Generated: ' + new Date().toLocaleDateString());
+                data.push('');
+                
+                const questions = [
+                    {key: 'negative_thought', title: '1. What\'s that one thought that shows up and ruins everything?'},
+                    {key: 'body_response', title: '2. How does it mess with your body?'},
+                    {key: 'doubt_sources', title: '3. Who are the people who make you doubt yourself?'},
+                    {key: 'pressure_identity', title: '4. When pressure hits, who do you become?'},
+                    {key: 'failure_story', title: '5. What\'s the story you tell yourself about why you fail?'},
+                    {key: 'current_character', title: '6. If your current self-image were a movie character, who would it be?'},
+                    {key: 'reset_cue', title: '7. What\'s your reset cue?'},
+                    {key: 'calm_memory', title: '8. What helped you reset when you felt calm and in control?'},
+                    {key: 'favorite_self', title: '9. Picture your favorite version of yourself:'},
+                    {key: 'pressure_moment_visual', title: '10. Picture that exact pressure moment - what do you see?'},
+                    {key: 'body_feeling', title: '11. How does your body feel?'},
+                    {key: 'sounds', title: '12. What do you hear?'},
+                    {key: 'overthinking_signs', title: '13. How do you know when you\'re overthinking?'},
+                    {key: 'trust_feeling', title: '14. What does trusting your training feel like?'},
+                    {key: 'trust_appearance', title: '15. What do you look like when you trust yourself?'},
+                    {key: 'encouragement', title: '16. Encouraging words from others - what worked?'},
+                    {key: 'live_results', title: '17. Live results - what actually worked?'},
+                    {key: 'old_character_recap', title: '18. Your old self-image character:'},
+                    {key: 'new_character', title: '19. Your new character:'},
+                    {key: 'new_story', title: '20. Your new story: "I am the person who..."'},
+                    {key: 'chosen_version', title: '21. When pressure hits next time, which version are you choosing?'}
+                ];
+                
+                questions.forEach(q => {
+                    data.push('');
+                    data.push(q.title);
+                    data.push(responses[q.key] || '[Not answered]');
+                });
+                
+                data.push('');
+                data.push('---');
+                data.push('Generated by The Grey Area Mental Training LIFT & SHIFT Worksheet');
+                data.push(new Date().toLocaleDateString());
+                
+                const blob = new Blob([data.join('\n')], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'LIFT_SHIFT_My_Responses_' + new Date().toISOString().split('T')[0] + '.txt';
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                showStatus('✅ Your responses downloaded!');
+                
+            } catch (error) {
+                console.error('Save error:', error);
+                showStatus('❌ Error saving. Please try again.');
+            }
+        }
+        
+        function clearAll() {
+            if (confirm('Clear all your responses? This cannot be undone.')) {
+                responses = {};
+                document.querySelectorAll('.text-input').forEach(input => {
+                    input.value = '';
+                    input.classList.remove('has-content');
+                });
+                localStorage.removeItem('lift_shift_responses');
+                updateProgress();
+                showStatus('All responses cleared.');
+            }
+        }
+    </script>
+</body>
+</html>
