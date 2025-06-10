@@ -653,10 +653,16 @@
         }
         
         function showSaveStatus() {
+            showStatus('Saved!');
+        }
+
+        function showStatus(message) {
             const status = document.getElementById('saveStatus');
+            status.textContent = message;
             status.classList.add('show');
             setTimeout(() => {
                 status.classList.remove('show');
+                status.textContent = 'Saved!';
             }, 2000);
         }
         
